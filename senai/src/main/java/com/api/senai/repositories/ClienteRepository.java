@@ -1,5 +1,11 @@
 package com.api.senai.repositories;
 
-public interface ClienteRepository {
+
+import org.springframework.stereotype.Repository;
+
+import com.api.senai.entities.Cliente;
+
+@Repository
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     
 }

@@ -7,12 +7,12 @@ import com.api.senai.entities.Pessoa;
 public class Cliente extends Pessoa{
     
     private Conta conta;
-    private String clienteId;
+    private Long clienteId;
     private Timestamp dataExclusao;
     private  Boolean ativo;
     
     public Cliente(String nome, String cpf, Endereco endereco, Timestamp dataNasc, String telefone, String email,
-            Timestamp dataCad, Conta conta, String clienteId, Timestamp dataExclusao, Boolean ativo) {
+            Timestamp dataCad, Conta conta, Long clienteId, Timestamp dataExclusao, Boolean ativo) {
         super(nome, cpf, endereco, dataNasc, telefone, email, dataCad);
         this.conta = conta;
         this.clienteId = clienteId;
@@ -26,10 +26,10 @@ public class Cliente extends Pessoa{
     public void setConta(Conta conta) {
         this.conta = conta;
     }
-    public String getClienteId() {
+    public Long getClienteId() {
         return clienteId;
     }
-    public void setClienteId(String clienteId) {
+    public void setClienteId(Long clienteId) {
         this.clienteId = clienteId;
     }
     public Timestamp getDataExclusao() {
