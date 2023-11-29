@@ -22,6 +22,25 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
+
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.22</version> <!-- Verifique a versão mais recente -->
+        <scope>provided</scope>
+    </dependency>
+
+
+
+<!-- Hibernate JPA implementation -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.6.4.Final</version> <!-- Versão mais recente do Hibernate -->
+</dependency>
+
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
