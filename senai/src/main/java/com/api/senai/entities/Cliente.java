@@ -2,6 +2,9 @@ package com.api.senai.entities;
 
 import java.sql.Timestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +24,8 @@ import lombok.EqualsAndHashCode;
 import net.bytebuddy.implementation.bytecode.assign.reference.GenericTypeAwareAssigner;
 
 
-
+@AllArgsConstructor // cria automaticamente um construtor com todos atributos da classe
+@NoArgsConstructor // cria automaticamente um construtor vazio
 
 @Data
 @Entity

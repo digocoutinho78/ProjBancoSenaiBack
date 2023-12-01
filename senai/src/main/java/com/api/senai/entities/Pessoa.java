@@ -10,8 +10,8 @@ import lombok.Data;
 
 
 
-
-@Data
+// ERRO EM DATA E ONETOONE - PESQUISAR
+// @Data
 @MappedSuperclass
 public abstract class Pessoa {
     private String nome; 
@@ -22,7 +22,7 @@ public abstract class Pessoa {
     private String email;
     private Timestamp dataCad; // data cadastro
 
-@OneToOne
+// @OneToOne
 
 // Abaixo para alinhar com o ViaCep
 
