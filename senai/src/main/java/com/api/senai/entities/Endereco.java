@@ -1,53 +1,70 @@
 package com.api.senai.entities;
 
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
+
+import com.google.gson.Gson;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "enderecos")
 public class Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String cep;
+    private String logradouro;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String localidade; // cidade
+    private String uf;
 
-   private String id;
-   private String rua;
-   private String numero;
-   private String cep;
-   private String bairro;
-   
-public Endereco(String id, String rua, String numero, String cep, String bairro) {
-    this.id = id;
-    this.rua = rua;
-    this.numero = numero;
-    this.cep = cep;
-    this.bairro = bairro;
-}
+    @OneToOne(mappedBy = "endereco")
+    private Cliente cliente;
 
-public String getId() {
-    return id;
-}
-public void setId(String id) {
-    this.id = id;
-}
-public String getRua() {
-    return rua;
-}
-public void setRua(String rua) {
-    this.rua = rua;
-}
-public String getNumero() {
-    return numero;
-}
-public void setNumero(String numero) {
-    this.numero = numero;
-}
-public String getCep() {
-    return cep;
-}
-public void setCep(String cep) {
-    this.cep = cep;
-}
-public String getBairro() {
-    return bairro;
-}
-public void setBairro(String bairro) {
-    this.bairro = bairro;
-}
+    @OneToOne(mappedBy = "endereco")
+    private Funcionario funcionario;
 
-    //implementar o via cep aqui 
+    public static Endereco getEnderecoByCep(String cep) {
+        // Endereco endereco = new Endereco();
+        Endereco endereco = Endereco.getEnderecoByCep(cep); // ajuste
 
-    
+        // Mandar o cep para o viaCep
+        HttpGet request = new HttpGet("https://viacep.com.br/ws/" + cep + "/json/");
+
+        try (
+                CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+                CloseableHttpResponse response = httpClient.execute(request);) {
+            HttpEntity entity = response.getEntity();
+            String result = EntityUtils.toString(entity);
+            System.out.println(result);
+
+            Gson gson = new Gson();
+            endereco = gson.fromJson(result, Endereco.class);
+            endereco.setComplemento(null);
+            System.out.println(endereco);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Tratar a resposta do via cep
+
+        return endereco;
+    }
 }

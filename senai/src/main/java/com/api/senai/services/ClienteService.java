@@ -36,14 +36,15 @@ public class ClienteService {
 
 // ERRO EM SETALL 
 
-    // public Cliente updateCliente(Long id, Cliente clienteAtualizado){
+//     public Cliente updateCliente(Long id, Cliente clienteAtualizado){
         
-    //     Cliente clienteExistente = getClienteById(id);
-    //     clienteExistente.setAllAtributos(clienteAtualizado);
-    //     saveCliente(clienteExistente);
+//         Cliente clienteExistente = getClienteById(id);
+//         clienteExistente.setAllAtributos(clienteAtualizado);
+//         saveCliente(clienteExistente);
         
-    //     return clienteExistente;
-    // }
+//         return clienteExistente;
+//     }
+
     public Cliente deleteCliente(Long id){
 
         clienteRepository.deleteById(id);
