@@ -8,13 +8,10 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
-
-
-// ERRO EM DATA E ONETOONE - PESQUISAR
-// @Data
+@Data
 @MappedSuperclass
 public abstract class Pessoa {
-    private String nome; 
+    private String nome;
     private String cpf;
     private Endereco endereco;
     private Timestamp dataNasc;
@@ -22,12 +19,11 @@ public abstract class Pessoa {
     private String email;
     private Timestamp dataCad; // data cadastro
 
-// @OneToOne
+    // Abaixo para alinhar com o ViaCep
 
-// Abaixo para alinhar com o ViaCep
+    // @OneToOne
+    // @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name =
+    // "endereco_fkey"))
+    // private Endereco endereco;
 
-// @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name = "endereco_fkey"))
-// private Endereco endereco;
-
- 
 }

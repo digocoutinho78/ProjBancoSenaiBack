@@ -23,7 +23,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import net.bytebuddy.implementation.bytecode.assign.reference.GenericTypeAwareAssigner;
 
-
 @AllArgsConstructor // cria automaticamente um construtor com todos atributos da classe
 @NoArgsConstructor // cria automaticamente um construtor vazio
 
@@ -32,31 +31,30 @@ import net.bytebuddy.implementation.bytecode.assign.reference.GenericTypeAwareAs
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "cliente")
 
-//unique constraint?
+// unique constraint?
 
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clienteId;
     private String login;
     private String senha;
     private boolean ativo;
     private Timestamp dataExclusao;
-    
-    @OneToMany (mappedBy = "cliente")
+
+    @OneToOne(mappedBy = "cliente")
     private Conta conta;
- 
-    
-    
-    // public Cliente(String nome, String cpf, Endereco endereco, Timestamp dataNasc, String telefone, String email,
-    //         Timestamp dataCad, Conta conta, String clienteId, Timestamp dataExclusao, Boolean ativo) {
-    //     super(nome, cpf, endereco, dataNasc, telefone, email, dataCad);
-    //     this.conta = conta;
-    //     this.clienteId = clienteId;
-    //     this.dataExclusao = dataExclusao;
-    //     this.ativo = ativo;
+
+    // public Cliente(String nome, String cpf, Endereco endereco, Timestamp
+    // dataNasc, String telefone, String email,
+    // Timestamp dataCad, Conta conta, String clienteId, Timestamp dataExclusao,
+    // Boolean ativo) {
+    // super(nome, cpf, endereco, dataNasc, telefone, email, dataCad);
+    // this.conta = conta;
+    // this.clienteId = clienteId;
+    // this.dataExclusao = dataExclusao;
+    // this.ativo = ativo;
     // }
-    
-    
+
 }
