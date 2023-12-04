@@ -14,7 +14,7 @@ public class ClienteService {
 
 // copiado de exercicio e adaptado
 
-@Autowired
+    @Autowired
     private ClienteRepository clienteRepository;
 
     public List<Cliente> getAllClientes(){

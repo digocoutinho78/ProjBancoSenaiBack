@@ -13,7 +13,6 @@ import lombok.Data;
 public abstract class Pessoa {
     private String nome;
     private String cpf;
-    private Endereco endereco;
     private Timestamp dataNasc;
     private String telefone;
     private String email;
@@ -21,9 +20,8 @@ public abstract class Pessoa {
 
     // Abaixo para alinhar com o ViaCep
 
-    // @OneToOne
-    // @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name =
-    // "endereco_fkey"))
-    // private Endereco endereco;
-
+    @OneToOne
+    @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name =
+    "endereco_fkey"))
+    private Endereco endereco;
 }

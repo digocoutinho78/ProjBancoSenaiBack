@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.api.senai.entities.Operacao;
 
 @Repository
-
 public interface OperacaoRepository extends JpaRepository<Operacao, Long> {
     
 }

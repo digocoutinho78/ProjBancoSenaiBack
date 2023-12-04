@@ -4,35 +4,21 @@ import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.convert.DataSizeUnit;
-
-import com.api.senai.entities.Pessoa;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import net.bytebuddy.implementation.bytecode.assign.reference.GenericTypeAwareAssigner;
 
 @AllArgsConstructor // cria automaticamente um construtor com todos atributos da classe
 @NoArgsConstructor // cria automaticamente um construtor vazio
-
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "cliente")
-
-// unique constraint?
-
 public class Cliente extends Pessoa {
 
     @Id

@@ -1,5 +1,6 @@
 package com.api.senai.entities;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -17,29 +18,48 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "conta")
-
 public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long contaId;
-    private String conta;
-    private Agencia agenciaId;
+    private String numeroConta;
     private String tipo;
-    private double saldo;
+    private BigDecimal saldo;
     private Timestamp dataAbertura;
     private Timestamp dataEncerr;
-
+    private boolean ativo;
+    
     @OneToOne
-    @JoinColumn(name = "cliente", foreignKey = @ForeignKey(name = "cliente_fkey"))
+    @JoinColumn(name = "agencia", foreignKey = @ForeignKey(name = "agencia_fkey"))
+    private Agencia agencia;
+    
+    @OneToOne
+    @JoinColumn(name = "conta_cliente", foreignKey = @ForeignKey(name = "conta_cliente_fkey"))
     private Cliente cliente;
-
+    
     @OneToMany(mappedBy = "origem")
     private List<Operacao> operacoesOrigem;
 
     @OneToMany(mappedBy = "destino")
     private List<Operacao> operacoesDestino;
 
+    public BigDecimal getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(BigDecimal saldo) {
+        this.saldo = saldo;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+        
+}
     // <-
 
     // APAGAR DEPOIS
@@ -92,4 +112,3 @@ public class Conta {
     // this.dataEncerr = dataEncerr;
     // }
 
-}

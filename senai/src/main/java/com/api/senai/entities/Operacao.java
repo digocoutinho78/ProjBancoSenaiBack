@@ -1,6 +1,7 @@
 package com.api.senai.entities;
 
-import java.sql.Timestamp;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,24 +9,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "operacao")
-
 public class Operacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long OperacaoId;
     private String TipoOperacao; // saque deposito ou transferencia
-    private Conta contaOrigem;
-    private Conta contaDestino;
-    private double valor;
-    private Timestamp data;
+    private BigDecimal valor;
+    private LocalDateTime dataHora;
 
     @ManyToOne
     @JoinColumn
