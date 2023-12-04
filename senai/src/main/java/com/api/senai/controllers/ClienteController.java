@@ -45,7 +45,7 @@ public class ClienteController {
         }
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> getClientesById(@PathVariable Long id){
+    public ResponseEntity<Cliente> getClientesById(@PathVariable Long id){ //pathvariable 
         
         Cliente cliente = clienteService.getClienteById(id);
 
@@ -56,7 +56,7 @@ public class ClienteController {
         }
     }
     @PostMapping
-    public ResponseEntity<Cliente> saveCliente(@RequestBody Cliente novoCliente){
+    public ResponseEntity<Cliente> saveCliente(@RequestBody Cliente novoCliente){  //requestbody espera uma requisição que mande o corpo
 
         Cliente cliente = clienteService.saveCliente(novoCliente);
         return ResponseEntity.ok(cliente);
