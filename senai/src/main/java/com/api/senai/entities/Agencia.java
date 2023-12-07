@@ -21,6 +21,9 @@ public class Agencia {
     @OneToMany(mappedBy = "agencia") // Especifica o relacionamento com a entidade "Conta".
     public List<Conta> contas;
 
+    @OneToMany(mappedBy = "agencia") // Especifica o relacionamento com a entidade "Conta".
+    public List<Funcionario> funcionarios;
+
     public Agencia(String agenciaId, Endereco endereco, List<Conta> contas) {
         this.agenciaId = agenciaId;
         this.endereco = endereco;
