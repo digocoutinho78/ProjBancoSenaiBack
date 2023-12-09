@@ -1,5 +1,7 @@
 package com.api.senai.entities;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,10 +10,12 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Transacao {
-    
+public abstract class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    
-}
+    private Long TransacaoId;
+    private LocalDateTime dataHora;
+
+    }
+
+

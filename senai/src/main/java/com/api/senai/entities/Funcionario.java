@@ -29,7 +29,7 @@ public class Funcionario extends Pessoa{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long funcId ;
+    private Long funcId;
 
     @ManyToOne
     @JoinColumn(name = "agencia", foreignKey = @ForeignKey(name = "agencia_fkey"))
@@ -64,3 +64,4 @@ A classe  Funcionario  possui um método  setAllAtributos(Funcionario funcionari
 
 */
     
+

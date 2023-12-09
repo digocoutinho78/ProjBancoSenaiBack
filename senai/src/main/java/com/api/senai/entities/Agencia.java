@@ -15,8 +15,8 @@ public class Agencia {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String agenciaId;
-    private Endereco endereco;
+    private Long agenciaId;
+    // private Endereco endereco;
 
     @OneToMany(mappedBy = "agencia") // Especifica o relacionamento com a entidade "Conta".
     public List<Conta> contas;
@@ -24,9 +24,9 @@ public class Agencia {
     @OneToMany(mappedBy = "agencia") // Especifica o relacionamento com a entidade "Conta".
     public List<Funcionario> funcionarios;
 
-    public Agencia(String agenciaId, Endereco endereco, List<Conta> contas) {
+    public Agencia(Long agenciaId, Endereco endereco, List<Conta> contas) {
         this.agenciaId = agenciaId;
-        this.endereco = endereco;
+        // this.endereco = endereco;
         this.contas = contas;
     }
 }

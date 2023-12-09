@@ -102,3 +102,6 @@ public class ContaService {
 //*  realizarTransacao(Long contaOrigemId, Long contaDestinoId, BigDecimal valor) : Realiza uma transação entre duas contas. 
 //O serviço também implementa alguns métodos relacionados à lógica de negócios da conta, como calcular o saldo de uma conta e verificar se uma conta está ativa.
 // Métodos relacionados à lógica de negócios da conta
+
+    
+

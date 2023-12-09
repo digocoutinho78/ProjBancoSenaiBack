@@ -34,7 +34,7 @@ public class AgenciaService {
         if (agenciaExistente != null) {
             // Update the properties of agenciaExistente with the values from agenciaAtualizada
             agenciaExistente.setAgenciaId(agenciaAtualizada.getAgenciaId());
-            agenciaExistente.setEndereco(agenciaAtualizada.getEndereco());
+            // agenciaExistente.setEndereco(agenciaAtualizada.getEndereco());
             // Save the updated agenciaExistente
             return agenciaRepository.save(agenciaExistente);
         } else {
