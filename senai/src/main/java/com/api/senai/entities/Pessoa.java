@@ -1,6 +1,6 @@
 package com.api.senai.entities;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
@@ -13,14 +13,15 @@ import lombok.Data;
 public abstract class Pessoa {
     private String nome;
     private String cpf;
-    private LocalDateTime dataNasc;
+    private Timestamp dataNasc;
     private String telefone;
     private String email;
-    private LocalDateTime dataCad; // data cadastro
+    private Timestamp dataCad; // data cadastro
 
     // Abaixo para alinhar com o ViaCep
 
     @OneToOne
-    @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name = "endereco_fkey"))
+    @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name =
+    "endereco_fkey"))
     private Endereco endereco;
 }

@@ -1,6 +1,6 @@
 package com.api.senai.entities;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -27,7 +28,7 @@ public class Cliente extends Pessoa {
     private String login;
     private String senha;
     private boolean ativo;
-    private LocalDateTime dataExclusao;
+    private Timestamp dataExclusao;
 
     @OneToOne(mappedBy = "cliente")
     private Conta conta;
