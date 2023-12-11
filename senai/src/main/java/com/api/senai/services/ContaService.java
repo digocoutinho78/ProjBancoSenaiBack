@@ -19,8 +19,12 @@ public class ContaService {
     @Autowired
     private ContaRepository contaRepository;
 
+
+
     @Autowired
     private OperacaoRepository operacaoRepository;
+
+   
 
     public List<Conta> getAllContas(){
         List<Conta> conta = contaRepository.findAll();
