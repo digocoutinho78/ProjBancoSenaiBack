@@ -55,4 +55,24 @@ public abstract class Transacao {
         this.tipo = tipo;
     }
 
+    public List<Transacao> getDestino() {
+        return null;
+    }
+
+    public BigDecimal getValor() {
+        return null;
+    }
+
+    public TipoTransacao getTipo() {
+        return null;
+    }
+
+    public Long getTransacaoId() {
+        return null;
+    }
+
+    public List<Transacao> getOrigem() {
+        return null;
+    }
+
 }

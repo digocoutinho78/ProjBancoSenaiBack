@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.query.NativeQuery.ReturnProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,16 @@ public class TransacaoService {
 
     public Transacao realizarTransacao(Long transacaoId, List<Transacao> origem, List<Transacao> destino, BigDecimal valor,
             TipoTransacao tipo) {
-        Transacao transacao = new Transacao(transacaoId, origem, destino, valor, LocalDateTime.now(), tipo);
-        return transacaoRepository.save(transacao);
+
+                Transacao transacao = new Transacao(transacaoId, origem, destino, valor, null, tipo) {
+                    
+                }; 
+                    return transacaoRepository.save(transacao);
+                
+
+
+        // Transacao transacao = new Transacao(transacaoId, origem, destino, valor, LocalDateTime.now(), tipo);
+        // return transacaoRepository.save(transacao);
     }
 
 }
