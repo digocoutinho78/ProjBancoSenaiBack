@@ -1,7 +1,7 @@
 package com.api.senai.entities;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 
 import jakarta.persistence.GeneratedValue;
@@ -26,8 +26,8 @@ public class Conta {
     private String numeroConta;
     private String tipo;
     private BigDecimal saldo;
-    private LocalDateTime dataAbertura;
-    private LocalDateTime dataEncerr;
+    private Timestamp dataAbertura;
+    private Timestamp dataEncerr;
     private boolean ativo;
     
     @ManyToOne

@@ -5,9 +5,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.api.senai.Enums.TipoTransacao;
 import com.api.senai.entities.Conta;
 import com.api.senai.entities.Operacao;
 import com.api.senai.repositories.ContaRepository;
@@ -61,6 +63,13 @@ public class ContaService {
         return contaExistente;
     }
 
+
+    @Transactional
+    public void atualizarSaldo(Long id, Conta origem, Conta destino, BigDecimal valor, LocalDateTime dataHora, TipoTransacao tipo) {
+        Conta conta = contaRepository.findById(id).orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+    
+        contaRepository.save(conta);
+    }    
 
     @Transactional
         public void realizarTransacao(Long contaOrigemId, Long contaDestinoId, BigDecimal valor) {

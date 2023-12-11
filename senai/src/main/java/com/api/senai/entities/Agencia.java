@@ -8,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Data
 @Entity
@@ -15,18 +18,19 @@ public class Agencia {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long agenciaId;
-    // private Endereco endereco;
+    private String agenciaId;
+    
+    @OneToOne
+    @JoinColumn (name = "endereco", foreignKey = @ForeignKey(name =
+    "endereco_fkey"))
+    private Endereco endereco;
 
     @OneToMany(mappedBy = "agencia") // Especifica o relacionamento com a entidade "Conta".
     public List<Conta> contas;
 
-    @OneToMany(mappedBy = "agencia") // Especifica o relacionamento com a entidade "Conta".
-    public List<Funcionario> funcionarios;
-
-    public Agencia(Long agenciaId, Endereco endereco, List<Conta> contas) {
+    public Agencia(String agenciaId, Endereco endereco, List<Conta> contas) {
         this.agenciaId = agenciaId;
-        // this.endereco = endereco;
+        this.endereco = endereco;
         this.contas = contas;
     }
 }
