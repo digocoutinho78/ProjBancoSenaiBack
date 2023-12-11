@@ -3,7 +3,7 @@ package com.api.senai.entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.api.senai.repositories.enums.TipoOperacao;
+import com.api.senai.enums.TipoOperacao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,9 +1,10 @@
 package com.api.senai.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.api.senai.repositories.enums.TipoTransacao;
+import com.api.senai.enums.TipoTransacao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,32 +17,42 @@ import jakarta.persistence.OneToOne;
 import lombok.Data;
 import jakarta.persistence.ForeignKey;
 
-@Data
 @Entity
 public abstract class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long TransacaoId;
+    private Long transacaoId;
+
     private LocalDateTime dataHora;
     private TipoTransacao tipo;
-   
+    private BigDecimal valor;
 
     @ManyToOne
     @JoinColumn(name = "transacao", foreignKey = @ForeignKey(name = "transacao_fkey"))
     private Transacao transacao;
-    
+
     @OneToOne
     @JoinColumn(name = "conta_cliente", foreignKey = @ForeignKey(name = "conta_cliente_fkey"))
     private Cliente cliente;
-    
+
     @OneToMany(mappedBy = "origem")
-    private List<Transacao> Origem;
+    private List<Transacao> origem;
 
     @OneToMany(mappedBy = "destino")
     private List<Transacao> Destino;
 
-
+    public Transacao() {
 
     }
 
+    public Transacao(Long transacaoId, List origem, List destino, BigDecimal valor, LocalDateTime dataHora,
+            TipoTransacao tipo) {
+        this.transacaoId = transacaoId;
+        this.origem = origem;
+        Destino = destino;
+        this.valor = valor;
+        this.dataHora = LocalDateTime.now();
+        this.tipo = tipo;
+    }
 
+}
